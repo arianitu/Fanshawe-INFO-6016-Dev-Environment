@@ -30,7 +30,7 @@ Redis port:
 
 HTTP (with ssl)
 
-    http://localhost:5443
+    https://localhost:5443
 
 HTTP (without ssl)
 
