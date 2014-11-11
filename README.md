@@ -40,5 +40,5 @@ MySQL
 
     localhost:9234
 
-     name: root
-     password: info6016
+    name: root
+    password: info6016
