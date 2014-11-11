@@ -1,11 +1,10 @@
 INFO-6016 Dev Environment
+Requirements
 
-I. Requirements
+	Vagrant (with Virtual Box)
+	Ansible
 
-	+ Vagrant (with Virtual Box)
-	+ Ansible
-
-II. Install Vagrant for Local Development
+Install Vagrant for Local Development
 
 	1. Download Virtual Box to machine
 
@@ -23,6 +22,23 @@ II. Install Vagrant for Local Development
 
 		vagrant ssh
 
+Ports
 
+Redis port:
 
+    127.0.0.1:7421
 
+HTTP (with ssl)
+
+    http://127.0.0.0.1:5443
+
+HTTP (without ssl)
+
+    http://127.0.0.0.1:5656
+
+MySQL
+
+    127.0.0.0.1:9234
+
+	name: root
+	password: info6016
