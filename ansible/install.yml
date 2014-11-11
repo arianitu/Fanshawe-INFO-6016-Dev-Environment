@@ -1,5 +1,5 @@
 ---
-- hosts: vagrant
+- hosts: all
   sudo: yes
   roles:
   - common
@@ -9,6 +9,3 @@
   - php-fpm-55
   - composer
   - redis
-  - gearman
-  - rabbitmq
-  - varnish

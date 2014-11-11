@@ -10,20 +10,32 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "mdev"
+  config.vm.box = "centosx86_fanshawe"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  # config.vm.box_url = "http://domain.com/path/to/above.box"
+  config.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network :forwarded_port, guest: 80, host: 8080
 
+  # Nginx HTTP Forward
+  config.vm.network :forwarded_port, guest: 80, host: 5656
+
+  # Nginx HTTP (with SSL) Forward
+  config.vm.network :forwarded_port, guest: 443, host: 5443
+
+  # Redis Forward
+  config.vm.network :forwarded_port, guest: 6379, host: 7421
+
+  # MySQL Forward
+  config.vm.network :forwarded_port, guest: 3306, host: 9234
+
+  config.vm.network "private_network", type: "dhcp"
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network :private_network, ip: "192.168.33.35"
+  # config.vm.network :private_network, ip: "192.168.33.35"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -38,7 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "~/Source", "/srv/www/", :mount_options => ['dmode=777', 'fmode=777']
+  config.vm.synced_folder "/Users/auka/www/fanshawe", "/srv/www/", :mount_options => ['dmode=777', 'fmode=777']
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -119,9 +131,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "ansible/install.yml"
-    ansible.inventory_path = "ansible/hosts"
     ansible.verbose = true
     ansible.sudo = true
+    ansible.limit = 'all'
   end
   
 

@@ -1,5 +1,10 @@
 server {
+        listen          443 ssl;
         listen          80;
+
+        ssl_certificate      /etc/nginx/ssl/server.crt;
+        ssl_certificate_key  /etc/nginx/ssl/server.key;
+        
         server_name     {{ default_domain }};
         root            /srv/www;
         index           index.php;
