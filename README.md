@@ -26,19 +26,19 @@ Install Vagrant for Local Development
 
 Redis port:
 
-    127.0.0.1:7421
+    localhost:7421
 
 HTTP (with ssl)
 
-    http://127.0.0.0.1:5443
+    http://localhost:5443
 
 HTTP (without ssl)
 
-    http://127.0.0.0.1:5656
+    http://localhost:5656
 
 MySQL
 
-    127.0.0.0.1:9234
+    localhost:9234
 
-	name: root
-	password: info6016
+     name: root
+     password: info6016
