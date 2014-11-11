@@ -22,7 +22,7 @@ Install Vagrant for Local Development
 
 		vagrant ssh
 
-Ports
+## Ports
 
 Redis port:
 
